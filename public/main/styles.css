@@ -1,0 +1,119 @@
+/* Body Styles */
+body {
+  margin: 0px;
+  overscroll-behavior: none;
+  touch-action: manipulation;
+}
+/* Nav Bar Styles */
+.topnav {
+  position: fixed;
+  top:0;
+  width: 100%;
+  background-color: #000;
+  overflow: hidden;
+  z-index: 4;
+}
+
+.topnav h1, h2 {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  margin: 0px;
+  float: left;
+  color: #fff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 96px;
+}
+
+.topnav h2 {
+  float: right;
+}
+
+.topnav h2:active, {
+  background-color: #444;
+}
+
+.arrow {
+  padding: 3.5px 16px;
+}
+
+/* Route div Styles */
+.route {
+  background: #f00;
+  overflow: auto;
+  border-radius: 24px;
+  margin: 16px;
+}
+
+.route:active {
+  background-color: #a00;
+}
+
+h3, h4 {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  margin: 0px;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 64px;
+}
+
+h4 {
+  font-size: 48px;
+}
+
+/* View Route Styles */
+.viewcanvas {
+  display: block;
+  z-index: 1;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+.pullupmove, .pullupfixed {
+  border-radius: 24px 24px 0px 0px;
+  margin: auto;
+  width: 150px;
+  height: 65px;
+  background: #f00;
+  z-index: 2;
+}
+
+.pullupmove {
+  position: relative;
+  margin-top: -63px;
+}
+
+.pullupfixed {
+  left: calc(50vw - 75px);
+  position: fixed;
+  overflow: hidden;
+  top: calc(100vh - 55px);
+}
+
+.inroute {
+  background: #f00;
+  z-index: 3;
+  margin-top: -10px;
+}
+
+.bottom {
+  width: 100%;
+  background: #f00;
+}
+
+/* New route styles */
+input, select {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  display: block;
+  border-width: 20px;
+  border-color: #f00;
+  border-style: solid;
+  border-radius: 1px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 64px;
+}

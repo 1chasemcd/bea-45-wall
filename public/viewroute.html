@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>BEA 45° Wall</title>
+
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-database.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyA8OKnEXgBgzDA13GSODMCqgOierbECufM",
+        authDomain: "bea45wall.firebaseapp.com",
+        databaseURL: "https://bea45wall.firebaseio.com",
+        projectId: "bea45wall",
+        storageBucket: "bea45wall.appspot.com",
+        messagingSenderId: "535631921759"
+      };
+      firebase.initializeApp(config);
+
+      var database = firebase.database();
+    </script>
+
+    <script src="jsFiles/wallclass.js"></script>
+    <script src="jsFiles/viewroute.js"></script>
+    <link rel="stylesheet" href="main/styles.css">
+
+    <link rel="apple-touch-icon" href="main/appIcon.png"/>
+    <link rel="apple-touch-startup-image" href="main/appIcon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+  </head>
+  <body>
+    <!--  Hidden Image  -->
+    <img src="main/wall.png" width="0" height="0" id="img">
+
+    <!--  Menu Bar  -->
+    <div class="topnav" id="topnav">
+      <h1>BEA 45° Wall</h1>
+      <h2 class="arrow" onclick="openIndex()">◀︎</a>
+    </div>
+
+    <!--  Page Content  -->
+    <canvas class="viewcanvas" id="viewcanvas" width="0" height="0"></canvas>
+    <div class="pullupfixed" id="pullup" onclick="scrollToBottom()">
+      <img src="main/upArrow.png" width="150" height="56.25" id="img">
+    </div>
+    <div class="inroute" id="inroute">
+    </div>
+    <div class="bottom" id="bottom"></div>
+  </body>
+</html>
