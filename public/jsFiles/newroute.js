@@ -9,6 +9,8 @@ var inroute;
 var form;
 var lowDiv;
 var wall;
+var focused = false;
+var digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 function onLoad() {
   //Locate HTML elements
@@ -35,6 +37,10 @@ function onLoad() {
     var setter = form.elements["setter"].value;
     var grade = form.elements["grade"].value;
 
+    if (name == "" || setter == "" || grade == "v" || grade == "" || wall.holds.length == 0) {
+      return false;
+    }
+
     database.ref("/routes").once("value").then( function(snapshot) {
       var i = 0;
       if (snapshot.numChildren() != 0) {
@@ -54,6 +60,8 @@ function onLoad() {
   }
 
   onChange();
+
+  setInterval(inputSafety, 100);
 }
 
 function onChange() {
@@ -89,8 +97,6 @@ function onChange() {
   } else {
     lowDiv.style.height = "0px";
   }
-
-  console.log(window.innerHeight);
 }
 
 function writeRouteData(index, name, setter, grade) {
@@ -130,5 +136,28 @@ function scrollToBottom() {
   if (window.pageYOffset < document.body.scrollHeight
     - window.innerHeight) {
     scrolldelay = setTimeout(scrollToBottom, 5);
+  }
+}
+
+function inputSafety() {
+  if (form.elements["name"].value.length > 20) {
+    form.elements["name"].value = form.elements["name"].value.substring(0, 25);
+  }
+
+  if (form.elements["setter"].value.length > 20) {
+    form.elements["setter"].value = form.elements["setter"].value.substring(0, 25);
+  }
+
+  if (focused && form.elements["grade"].value.length == 0) {
+    form.elements["grade"].value = "v";
+  }
+
+  if (form.elements["grade"].value.length > 3) {
+    form.elements["grade"].value = form.elements["grade"].value.substring(0, 3);
+  }
+
+  if (form.elements["grade"].value.length > 1 &&
+      !digits.includes(form.elements["grade"].value[form.elements["grade"].value.length - 1])) {
+    form.elements["grade"].value = form.elements["grade"].value.substring(0, form.elements["grade"].value.length - 1);
   }
 }
