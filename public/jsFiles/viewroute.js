@@ -1,4 +1,4 @@
-window.addEventListener('orientationchange', function(event){onChange();});
+window.addEventListener('orientationchange', function(event){ setTimeout(onChange, 200); });
 window.addEventListener("load", function() {setup();}, false);
 
 var wall;
@@ -25,7 +25,7 @@ function setup() {
   // Setup canvas
   canvas.style.marginTop = topNav.offsetHeight - 20 + "px";
   canvas.width = window.innerWidth;
-  canvas.height = window.innerWidth * (2016/1512);
+  canvas.height = window.innerWidth * (1200/900);
   wall = new Wall(canvas, img);
   setupHolds(routeId);
 

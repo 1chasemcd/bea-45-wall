@@ -1,7 +1,5 @@
-window.addEventListener('orientationchange', function(event){
-  onChange();
-});
-window.addEventListener("load", function() {onLoad()}, false);
+window.addEventListener('orientationchange', function(event){ setTimeout(onChange, 200); });
+window.addEventListener("load", function() {onLoad();}, false);
 
 var topNav;
 var canvas;
@@ -23,7 +21,7 @@ function onLoad() {
   lowDiv = document.getElementById("bottom");
 
   canvas.width = window.innerWidth;
-  canvas.height = window.innerWidth * (2016/1512);
+  canvas.height = window.innerWidth * (1200/900);
   wall = new Wall(canvas, img);
 
   canvas.addEventListener('click', function(event) {
@@ -62,7 +60,7 @@ function onChange() {
   // Setup canvas
   canvas.style.marginTop = topNav.offsetHeight - 20 + "px";
   canvas.width = window.innerWidth;
-  canvas.height = window.innerWidth * (1000/750);
+  canvas.height = window.innerWidth * (1200/900);
   wall.changeCanvas(canvas);
 
   // Code for sticky bottom tab
@@ -91,6 +89,8 @@ function onChange() {
   } else {
     lowDiv.style.height = "0px";
   }
+
+  console.log(window.innerHeight);
 }
 
 function writeRouteData(index, name, setter, grade) {

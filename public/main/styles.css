@@ -2,6 +2,7 @@
 body {
   margin: 0px;
   overscroll-behavior: none;
+  -webkit-user-select: none;
   touch-action: manipulation;
 }
 /* Nav Bar Styles */
