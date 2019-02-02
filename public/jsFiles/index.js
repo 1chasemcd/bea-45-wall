@@ -6,7 +6,6 @@ function setup() {
   var content = document.getElementById("content");
 
   content.style.marginTop = topNav.offsetHeight + 16 + "px";
-
   getRouteData();
 }
 

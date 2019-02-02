@@ -9,6 +9,7 @@ var inroute;
 var form;
 var lowDiv;
 var wall;
+var warningLabel;
 var focused = false;
 var digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
@@ -21,6 +22,7 @@ function onLoad() {
   inroute = document.getElementById("inroute");
   form = document.getElementById("routeform");
   lowDiv = document.getElementById("bottom");
+  warningLabel = document.getElementById("warningLabel");
 
   canvas.width = window.innerWidth;
   canvas.height = window.innerWidth * (1200/900);
@@ -32,36 +34,57 @@ function onLoad() {
   });
 
   // Code for form submit
-  form.onsubmit = function() {
-    var name = form.elements["name"].value;
-    var setter = form.elements["setter"].value;
-    var grade = form.elements["grade"].value;
-
-    if (name == "" || setter == "" || grade == "v" || grade == "" || wall.holds.length == 0) {
-      return false;
-    }
-
-    database.ref("/routes").once("value").then( function(snapshot) {
-      var i = 0;
-      if (snapshot.numChildren() != 0) {
-        snapshot.forEach(function(childSnapshot) {
-          if (i == snapshot.numChildren() - 1) {
-            writeRouteData(parseInt(childSnapshot.key) + 1, name, setter, grade);
-          }
-          i++;
-        })
-      } else {
-        writeRouteData("0", name, setter, grade);
-      }
-    });
-
-    // Return false to prevent the default form behavior
-    return false;
-  }
+  form.onsubmit = function(e) {
+    e.preventDefault();
+    formSubmit();
+  };
 
   onChange();
 
   setInterval(inputSafety, 100);
+}
+
+function formSubmit(e) {
+  var name = form.elements["name"].value;
+  var setter = form.elements["setter"].value;
+  var grade = form.elements["grade"].value;
+
+  if (name == "") {
+    warningLabel.innerHTML = "<br>⚠️ Enter Route Name ⚠️";
+    return false;
+  }
+
+  if (setter == "") {
+    warningLabel.innerHTML = "<br>⚠️ Enter Setter Name ⚠️";
+    return false;
+  }
+
+  if (grade == "v" || grade == "") {
+    warningLabel.innerHTML = "<br>⚠️ Enter Route Grade ⚠️";
+    return false;
+  }
+
+  if (wall.holds.length < 2) {
+    warningLabel.innerHTML = "<br>⚠️ Select at Least 2 Holds ⚠️";
+    return false;
+  }
+
+  database.ref("/routes").once("value").then( function(snapshot) {
+    var i = 0;
+    if (snapshot.numChildren() != 0) {
+      snapshot.forEach(function(childSnapshot) {
+        if (i == snapshot.numChildren() - 1) {
+          writeRouteData(parseInt(childSnapshot.key) + 1, name, setter, grade);
+        }
+        i++;
+      })
+    } else {
+      writeRouteData("0", name, setter, grade);
+    }
+  });
+
+  // Return false to prevent the default form behavior
+  return false;
 }
 
 function onChange() {
@@ -140,20 +163,8 @@ function scrollToBottom() {
 }
 
 function inputSafety() {
-  if (form.elements["name"].value.length > 20) {
-    form.elements["name"].value = form.elements["name"].value.substring(0, 25);
-  }
-
-  if (form.elements["setter"].value.length > 20) {
-    form.elements["setter"].value = form.elements["setter"].value.substring(0, 25);
-  }
-
   if (focused && form.elements["grade"].value.length == 0) {
     form.elements["grade"].value = "v";
-  }
-
-  if (form.elements["grade"].value.length > 3) {
-    form.elements["grade"].value = form.elements["grade"].value.substring(0, 3);
   }
 
   if (form.elements["grade"].value.length > 1 &&

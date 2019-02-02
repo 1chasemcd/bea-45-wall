@@ -26,20 +26,8 @@
     <link rel="stylesheet" href="main/styles.css">
 
     <link rel="apple-touch-icon" href="main/appIcon.png"/>
-    <link rel="apple-touch-startup-image" href="main/appIcon.png">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-
-    <link href="splashscreens/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-    <link href="splashscreens/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-    <link href="splashscreens/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
-    <link href="splashscreens/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
-    <link href="splashscreens/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-    <link href="splashscreens/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
-    <link href="splashscreens/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-    <link href="splashscreens/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-    <link href="splashscreens/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-    <link href="splashscreens/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
 
   </head>
   <body>
@@ -49,7 +37,7 @@
     <!--  Menu Bar  -->
     <div class="topnav" id="topnav">
       <h1>BEA 45° Wall</h1>
-      <h2 class="arrow" onclick="openIndex()">◀︎</a>
+      <img src="main/back.png" height="110" class="buttonImg" onclick="openIndex()"></img>
     </div>
 
     <!--  Page Content  -->
@@ -58,11 +46,22 @@
       <img src="main/upArrow.png" width="150" height="56.25" id="img">
     </div>
     <div class="inroute" id="inroute">
-      <form id="routeform">
-        <input type="text" name="name" placeholder="Route Name">
-        <input type="text" name="setter" placeholder="Setter">
-        <input type="text" name="grade" placeholder="Grade" onfocus="focused = true;">
-        <input type="submit" name="submit">
+      <h5 id="warningLabel"></h5>
+      <form id="routeform" novalidate>
+        <br>
+        <br>
+        <input type="text" name="name" placeholder="Route Name" maxlength="25">
+        <br>
+        <br>
+        <input type="text" name="setter" placeholder="Setter" maxlength="25">
+        <br>
+        <br>
+        <input type="text" name="grade" placeholder="Grade" onfocus="form.elements['grade'].value = 'v'; focused = true;" pattern="[0-9]*" inputmode="numeric" maxlength="3">
+        <br>
+        <br>
+        <input type="submit" name="submit" class="submit">
+        <br>
+        <br>
       </form>
     </div>
     <div class="bottom" id="bottom"></div>
