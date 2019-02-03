@@ -115,8 +115,8 @@ function onChange() {
 
 // Code for bottom spacefiller div
   if (window.innerHeight > canvas.height + topNav.offsetHeight){
-    lowDiv.style.height = window.innerHeight -
-    (inroute.offsetTop + inroute.offsetHeight) + "px";
+    lowDiv.style.height = (window.innerHeight -
+    (inroute.offsetTop + inroute.offsetHeight)) + 2 + "px";
   } else {
     lowDiv.style.height = "0px";
   }
@@ -165,6 +165,12 @@ function scrollToBottom() {
 function inputSafety() {
   if (focused && form.elements["grade"].value.length == 0) {
     form.elements["grade"].value = "v";
+  } else if (focused == false && form.elements["grade"].value == "v") {
+    form.elements["grade"].value = "";
+  }
+
+  if (focused && form.elements["grade"].value[0] != "v") {
+    form.elements["grade"].value = "v" + form.elements["grade"].value[0];
   }
 
   if (form.elements["grade"].value.length > 1 &&

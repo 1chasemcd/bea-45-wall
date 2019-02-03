@@ -51,8 +51,8 @@ function onChange() {
 
 // Code for bottom spacefiller div
   if (window.innerHeight > canvas.height + topNav.offsetHeight){
-    lowDiv.style.height = window.innerHeight -
-    (inroute.offsetTop + inroute.offsetHeight) + "px";
+    lowDiv.style.height = (window.innerHeight -
+    (inroute.offsetTop + 246)) + 2 + "px";
   } else {
     lowDiv.style.height = "0px";
   }

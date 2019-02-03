@@ -47,7 +47,8 @@
     </div>
     <div class="inroute" id="inroute">
       <h5 id="warningLabel"></h5>
-      <form id="routeform" novalidate>
+      <form autocomplete="off" id="routeform" novalidate>
+        <input autocomplete="false" name="hidden" type="text" style="display:none;">
         <br>
         <br>
         <input type="text" name="name" placeholder="Route Name" maxlength="25">
@@ -56,7 +57,7 @@
         <input type="text" name="setter" placeholder="Setter" maxlength="25">
         <br>
         <br>
-        <input type="text" name="grade" placeholder="Grade" onfocus="form.elements['grade'].value = 'v'; focused = true;" pattern="[0-9]*" inputmode="numeric" maxlength="3">
+        <input type="text" name="grade" placeholder="Grade" onfocus="focused = true;" onblur="focused = false;" pattern="[0-9]*" inputmode="numeric" maxlength="3">
         <br>
         <br>
         <input type="submit" name="submit" class="submit">
