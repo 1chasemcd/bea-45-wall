@@ -126,3 +126,32 @@ input {
 .submit {
   background-color: #fff;
 }
+
+/* Terms styles */
+
+.terms {
+  color: #000;
+  text-align: left;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  margin: 0px;
+  padding: 10px;
+  text-decoration: none;
+}
+
+p.terms {
+  font-size: 28px;
+}
+
+.spacer {
+  height: 140px;
+}
+
+a {
+  text-align: center;
+  color: #006;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  display: block;
+  margin: auto;
+  padding: 10px;
+  font-size: 36px;
+}
