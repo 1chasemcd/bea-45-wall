@@ -5,8 +5,6 @@ var wall;
 var topNav;
 var canvas;
 var img;
-var pullup;
-var inroute;
 var lowDiv;
 var routeId;
 
@@ -15,8 +13,6 @@ function setup() {
   topNav = document.getElementById("topnav");
   canvas = document.getElementById("viewcanvas");
   img = document.getElementById("img");
-  pullup = document.getElementById("pullup");
-  inroute = document.getElementById("inroute");
   lowDiv = document.getElementById("bottom");
   routeId = location.hash.substr(1);
 
@@ -33,22 +29,6 @@ function setup() {
 }
 
 function onChange() {
-  // Code for sticky bottom tab
-  var stickyY = inroute.offsetTop - window.innerHeight;
-  if (window.innerHeight > canvas.height + topNav.offsetHeight){
-    pullup.classList.add("pullupmove");
-    pullup.classList.remove("pullupfixed");
-  }
-  window.onscroll = function() {
-    if (window.pageYOffset > stickyY) {
-      pullup.classList.add("pullupmove");
-      pullup.classList.remove("pullupfixed");
-    } else {
-      pullup.classList.remove("pullupmove");
-      pullup.classList.add("pullupfixed");
-    }
-  }
-
 // Code for bottom spacefiller div
   if (window.innerHeight > canvas.height + topNav.offsetHeight){
     lowDiv.style.height = (window.innerHeight -
@@ -95,13 +75,4 @@ function addHTMLInRoute(name, setter, grade) {
 // Return to the main page.
 function openIndex() {
   location.href='index.html';
-}
-
-// Slowly scroll to bottom on tab click.
-function scrollToBottom() {
-  window.scrollBy(0,10);
-  if (window.pageYOffset < document.body.scrollHeight
-    - window.innerHeight) {
-    scrolldelay = setTimeout(scrollToBottom, 5);
-  }
 }

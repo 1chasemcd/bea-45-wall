@@ -78,25 +78,15 @@ h5 {
   -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
-.pullupmove, .pullupfixed {
+.pullup {
   border-radius: 24px 24px 0px 0px;
   margin: auto;
   width: 150px;
   height: 65px;
   background: #f00;
   z-index: 2;
-}
-
-.pullupmove {
   position: relative;
   margin-top: -63px;
-}
-
-.pullupfixed {
-  left: calc(50vw - 75px);
-  position: fixed;
-  overflow: hidden;
-  top: calc(100vh - 55px);
 }
 
 .inroute {
