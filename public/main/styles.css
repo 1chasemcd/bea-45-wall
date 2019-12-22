@@ -136,7 +136,8 @@ p.terms {
   height: 140px;
 }
 
-a {
+.link {
+  text-decoration: underline;
   text-align: center;
   color: #006;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
